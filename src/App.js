@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import CryptoList from './components/CryptoList';
+import CryptoDetails from './components/CryptoDetails';
+import Watchlist from './components/Watchlist';
+import Login from './components/Login';
+import Register from './components/Register';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact component={CryptoList} />
+        <Route path="/crypto/:id" component={CryptoDetails} />
+        <Route path="/watchlist" component={Watchlist} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+      </Switch>
+    </>
   );
 }
 
